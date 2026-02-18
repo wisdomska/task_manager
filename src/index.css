@@ -1,0 +1,69 @@
+/* ===========================
+   Global Styles — Task Manager
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color palette */
+  --color-bg: #0f0f1a;
+  --color-surface: #1a1a2e;
+  --color-surface-hover: #222240;
+  --color-border: #2a2a4a;
+  --color-text-primary: #e8e8f0;
+  --color-text-secondary: #9090b0;
+  --color-text-muted: #6060808;
+  --color-accent: #6c63ff;
+  --color-accent-hover: #5a52e0;
+  --color-error: #ff6b6b;
+
+  /* Status colors */
+  --color-todo: #6b7280;
+  --color-todo-bg: rgba(107, 114, 128, 0.15);
+  --color-in-progress: #3b82f6;
+  --color-in-progress-bg: rgba(59, 130, 246, 0.15);
+  --color-done: #10b981;
+  --color-done-bg: rgba(16, 185, 129, 0.15);
+
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+
+  /* Rendering */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
