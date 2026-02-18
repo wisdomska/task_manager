@@ -7,8 +7,9 @@ import TaskItem from './TaskItem';
  * @param {Object} props
  * @param {Array} props.tasks - Array of task objects
  * @param {Function} props.onStatusChange - Callback for status changes
+ * @param {Function} props.onDelete - Callback for deleting a task
  */
-function TaskList({ tasks, onStatusChange }) {
+function TaskList({ tasks, onStatusChange, onDelete }) {
     if (!tasks || tasks.length === 0) {
         return (
             <div className="task-list-empty" data-testid="empty-state">
@@ -24,6 +25,7 @@ function TaskList({ tasks, onStatusChange }) {
                     key={task.id}
                     task={task}
                     onStatusChange={onStatusChange}
+                    onDelete={onDelete}
                 />
             ))}
         </div>
