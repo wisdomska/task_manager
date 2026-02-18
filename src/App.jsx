@@ -1,19 +1,27 @@
 import { useState } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import TaskFilter from './components/TaskFilter';
 import './App.css';
 
 /**
  * App — main component for the Task Management Dashboard.
- * Manages the tasks array state and provides handlers for
- * adding tasks and updating task status.
+ * Manages tasks state with localStorage persistence.
+ * Provides handlers for adding, deleting, updating status, and filtering tasks.
  */
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage('taskManager_tasks', []);
+  const [activeFilter, setActiveFilter] = useState('All');
 
   // Add a new task to the list
   const addTask = (newTask) => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
+  // Delete a task by id
+  const deleteTask = (taskId) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
   // Update the status of an existing task
@@ -24,6 +32,11 @@ function App() {
       )
     );
   };
+
+  // Filter tasks based on active filter
+  const filteredTasks = activeFilter === 'All'
+    ? tasks
+    : tasks.filter((task) => task.status === activeFilter);
 
   return (
     <div className="app">
@@ -40,9 +53,22 @@ function App() {
         <section className="app-content">
           <div className="task-list-header">
             <h2>My Tasks</h2>
-            <span className="task-count">{tasks.length} task{tasks.length !== 1 ? 's' : ''}</span>
+            <span className="task-count">
+              {filteredTasks.length} task{filteredTasks.length !== 1 ? 's' : ''}
+            </span>
           </div>
-          <TaskList tasks={tasks} onStatusChange={updateTaskStatus} />
+
+          <TaskFilter
+            tasks={tasks}
+            activeFilter={activeFilter}
+            onFilterChange={setActiveFilter}
+          />
+
+          <TaskList
+            tasks={filteredTasks}
+            onStatusChange={updateTaskStatus}
+            onDelete={deleteTask}
+          />
         </section>
       </main>
     </div>

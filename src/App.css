@@ -239,6 +239,13 @@
   word-wrap: break-word;
 }
 
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 .task-status {
   flex-shrink: 0;
 }
@@ -282,4 +289,145 @@
 
 .status-select:focus {
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* ---- Delete Button ---- */
+.btn-delete {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.btn-delete:hover {
+  color: var(--color-error);
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+/* ---- Confirmation Dialog ---- */
+.confirm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 26, 0.85);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.task-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.confirm-dialog {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.confirm-dialog p {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-confirm-delete {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  background: var(--color-error);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.btn-confirm-delete:hover {
+  opacity: 0.85;
+}
+
+.btn-cancel-delete {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.btn-cancel-delete:hover {
+  border-color: var(--color-text-secondary);
+}
+
+/* ---- Task Filter ---- */
+.task-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+.filter-btn.filter-active {
+  background: linear-gradient(135deg, var(--color-accent), #7c73ff);
+  color: #fff;
+  border-color: transparent;
+}
+
+.filter-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  min-width: 1.2rem;
+  text-align: center;
+}
+
+.filter-btn:not(.filter-active) .filter-count {
+  background: var(--color-surface-hover);
 }
